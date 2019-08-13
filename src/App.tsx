@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "materialize-css/dist/css/materialize.min.css";
+import "materialize-css/dist/js/materialize.min";
+import "./stylesheets/materialicons.css";
+import "./stylesheets/helpers.css";
+import "./stylesheets/common.css";
+import "./stylesheets/index.css";
+import Navbar from "./components/navbar/Navbar";
+import MobileNavbar from "./components/navbar/MobileNavbar";
+import PostContainer from "./components/post/PostContainer";
+import PostPreviewContainer from "./components/post/PostPreviewContainer";
+import Footer from "./components/Footer";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+	return (
+		<div className="App">
+			<Router>
+				<Navbar/>
+				<MobileNavbar/>
+				<Route exact path="/" component={PostPreviewContainer}/>
+				<Route path="/posts/:postid" component={PostContainer}/>
+				<Footer/>
+			</Router>
+		</div>
+	);
+};
 
 export default App;
