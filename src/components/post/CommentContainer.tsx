@@ -24,7 +24,7 @@ class CommentContainer extends React.Component {
 	render() {
 		return (
 			<div>
-				{this.state.comments.map(comment => <Comment key={comment.id} comment={comment}
+				{this.state.comments.reverse().map(comment => <Comment key={comment.id} comment={comment}
 															 postid={this.state.postid}/>)}
 			</div>
 		);

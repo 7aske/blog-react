@@ -4,6 +4,7 @@ import axios from "axios";
 import CommentContainer from "./CommentContainer";
 import VoteType from "../../@types/Vote";
 import PostType from "../../@types/Post";
+import PostCommentModal from "../modals/PostCommentModal";
 
 type PostContainerProps = {
 	match: any;
@@ -24,6 +25,13 @@ class PostContainer extends React.Component {
 		this.state = {post: null, votes: []};
 	}
 
+	onNewComment(comment: any): void {
+		console.log("PostContainer", comment);
+		const post = this.state.post;
+		post!.comments.reverse().push(comment);
+		this.setState({post});
+	}
+
 	componentWillMount(): void {
 		const url = new URL(window.location.href);
 		url.port = "5000";
@@ -40,6 +48,8 @@ class PostContainer extends React.Component {
 		return (
 			<main className="container">
 				{this.state.post ? <Post match={this.props.match} post={this.state.post}/> : ""}
+				{this.state.post ?
+					<PostCommentModal onNewComment={this.onNewComment.bind(this)} postid={this.state.post.id}/> : ""}
 				{this.state.post ?
 					<CommentContainer postid={this.state.post.id} comments={this.state.post.comments}/> : ""}
 			</main>
