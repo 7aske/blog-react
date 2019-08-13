@@ -110,7 +110,7 @@ class PostCommentModal extends React.Component {
 						</form>
 					</div>
 					<div className="modal-footer">
-						<a className="modal-close waves-effect waves-green btn red">Close</a>
+						<a className="modal-close waves-effect waves-green btn red mr-3">Close</a>
 						<a onClick={this.submit} className="modal-close waves-effect waves-green btn">Submit</a>
 					</div>
 				</div>

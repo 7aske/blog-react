@@ -2,6 +2,20 @@ html, body {
     overflow-x: hidden;
     //height: 100vh;
     width: 100%;
+
+    &::-webkit-scrollbar {
+        width: 0.5em;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: #dddddd;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 7px;
+        background-color: #717a82;
+        outline: 1px solid slategrey;
+    }
 }
 
 main {
