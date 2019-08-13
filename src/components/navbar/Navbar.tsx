@@ -8,8 +8,6 @@ class Navbar extends React.Component {
 		return (
 			<nav id="top">
 				<div className="nav-wrapper grey darken-4">
-					<Link to="/" className="brand-logo pl-3 orange-text left"><i
-						className="material-icons orange-text">arrow_back</i></Link>
 					<Link to="/" className="brand-logo pl-3 orange-text">.log</Link>
 				</div>
 			</nav>
