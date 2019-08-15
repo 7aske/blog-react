@@ -26,7 +26,7 @@ class EditPosts extends React.Component {
 		super(props);
 		this.editor = null;
 		this.props = props;
-		this.state = {startPost: 0, postCount: 5, done: false, ready: true, posts: [], post: null};
+		this.state = {startPost: 0, postCount: 10, done: false, ready: true, posts: [], post: null};
 		this.modalConfirm = React.createRef();
 		this.initEditor = this.initEditor.bind(this);
 		this.fetchPosts = this.fetchPosts.bind(this);
