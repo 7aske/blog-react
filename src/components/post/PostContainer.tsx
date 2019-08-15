@@ -34,7 +34,7 @@ class PostContainer extends React.Component {
 
 	componentWillMount(): void {
 		const url = new URL(window.location.href);
-		url.port = url.port === "0" ? "80" : url.port;
+		url.port = window.location.port === "0" || window.location.port === "" ? "80" : window.location.port;
 		url.pathname = "/api/v1/posts/" + this.props.match.params.postid;
 		axios.get(url.href).then(res => {
 			const post: PostType = res.data.post;

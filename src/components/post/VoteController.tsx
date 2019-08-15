@@ -33,8 +33,8 @@ class VoteController extends React.Component {
 		this.postVoteApiUrl = new URL(window.location.href);
 		this.commentApiUrl.pathname = `/api/v1/posts/${this.state.id}/comments`;
 		this.postVoteApiUrl.pathname = `/api/v1/posts/${this.state.id}`;
-		this.commentApiUrl.port = this.commentApiUrl.port === "0" ? "80" : this.commentApiUrl.port;
-		this.postVoteApiUrl.port = this.postVoteApiUrl.port === "0" ? "80" : this.commentApiUrl.port;;
+		this.commentApiUrl.port = window.location.port === "0" || window.location.port === "" ? "80" : window.location.port;
+		this.postVoteApiUrl.port = window.location.port === "0" || window.location.port === "" ? "80" : window.location.port;
 		this.handleClick = this.handleClick.bind(this);
 	}
 

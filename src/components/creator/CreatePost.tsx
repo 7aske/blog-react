@@ -91,7 +91,7 @@ class CreatePost extends React.Component {
 			return;
 		}
 		const url = new URL(window.location.href);
-		url.port = url.port === "0" ? "80" : url.port;
+		url.port = window.location.port === "0" || window.location.port === "" ? "80" : window.location.port;
 		url.pathname = "/api/v1/posts";
 		const cookies = new Cookies();
 		let token = cookies.get("authorization");

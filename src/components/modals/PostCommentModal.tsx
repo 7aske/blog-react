@@ -28,8 +28,8 @@ class PostCommentModal extends React.Component {
 		this.submit = this.submit.bind(this);
 	}
 
-	onNewCommentHandler(comment:any){
-		this.props.onNewComment(comment)
+	onNewCommentHandler(comment: any) {
+		this.props.onNewComment(comment);
 	}
 
 	onChange(event: React.KeyboardEvent) {
@@ -52,7 +52,7 @@ class PostCommentModal extends React.Component {
 		console.log(this.state);
 		const commentApiUrl = new URL(window.location.href);
 		commentApiUrl.pathname = `/api/v1/posts/${this.state.postid}/comments`;
-		commentApiUrl.port = "5000";
+		commentApiUrl.port = window.location.port === "0" || window.location.port === "" ? "80" : window.location.port;
 
 		const author = this.state.author;
 		const email = this.state.email;

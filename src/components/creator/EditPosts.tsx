@@ -113,7 +113,7 @@ class EditPosts extends React.Component {
 		const url = new URL(window.location.href);
 		if (this.state.post) {
 			const id = this.state.post.id;
-			url.port = url.port === "0" ? "80" : url.port;
+			url.port = window.location.port === "0" || window.location.port === "" ? "80" : window.location.port;
 			url.pathname = "/api/v1/posts/" + id;
 			const cookie = new Cookies();
 			let token = cookie.get("authorization");
@@ -165,7 +165,7 @@ class EditPosts extends React.Component {
 	updatePost() {
 		const post = this.state.post;
 		const url = new URL(window.location.href);
-		url.port = url.port === "0" ? "80" : url.port;
+		url.port = window.location.port === "0" || window.location.port === "" ? "80" : window.location.port;
 		url.pathname = "/api/v1/posts/";
 		if (post) {
 			const cookie = new Cookies();
@@ -205,7 +205,7 @@ class EditPosts extends React.Component {
 
 	fetchPosts() {
 		const url = new URL(window.location.href);
-		url.port = url.port === "0" ? "80" : url.port;
+		url.port = window.location.port === "0" || window.location.port === "" ? "80" : window.location.port;
 		url.pathname = "/api/v1/posts";
 
 		axios.get(url.href + `?start=${this.state.startPost}&count=${this.state.postCount}`).then(res => {

@@ -23,7 +23,7 @@ class CreatorWrapper extends React.Component {
 
 	onSubmit(form: any) {
 		const url = new URL(window.location.href);
-		url.port = url.port === "0" ? "80" : url.port;
+		url.port = window.location.port === "0" || window.location.port === "" ? "80" : window.location.port;
 		url.pathname = "/login";
 		axios.post(url.href, null, {
 			headers: {
@@ -42,7 +42,7 @@ class CreatorWrapper extends React.Component {
 
 	autoLogIn(){
 		const url = new URL(window.location.href);
-		url.port = url.port === "0" ? "80" : url.port;
+		url.port = window.location.port === "0" || window.location.port === "" ? "80" : window.location.port;
 		url.pathname = "/validate";
 		const cookies = new Cookies();
 		let authCookie = cookies.get("authorization");
