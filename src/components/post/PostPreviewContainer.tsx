@@ -31,7 +31,7 @@ class PostPreviewContainer extends React.Component {
 	fetchPosts(): void {
 		const postApiUrl = new URL(window.location.href);
 		postApiUrl.pathname = "/api/v1/posts";
-		postApiUrl.port = window.location.port === "0" ? "80" : "5000";
+		postApiUrl.port = window.location.port === "0" ? "80" : window.location.port;
 		const url = postApiUrl.href + `?count=${this.state.postCount}&start=${this.state.startIndex}`;
 
 		this.setState({fetch: false});
