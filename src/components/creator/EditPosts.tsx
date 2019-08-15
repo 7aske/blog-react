@@ -16,6 +16,13 @@ class EditPosts extends React.Component {
 
 	componentDidMount(): void {
 		this.initEditor();
+		const inputPostDescriptionEdit = document.querySelector("#input-post-description-edit") as HTMLFormElement;
+		inputPostDescriptionEdit.focus();
+		inputPostDescriptionEdit.blur();
+	}
+
+	fetchPosts() {
+
 	}
 
 	initEditor() {
@@ -56,12 +63,12 @@ class EditPosts extends React.Component {
 	render() {
 		return (
 			<div id="edit-posts" className="col s12">
-				<div className="col m3 s12 card">
+				<div className="col m3 s12 card mt-0">
 					<ul className="collection">
 					</ul>
 				</div>
 				<div className="col m9 s12 card edit-card">
-					<div className="row mt-4">
+					<div className="row mt-2 mb-1">
 						<div className="input-field col s6">
 							<input id="input-post-title-edit" defaultValue="Title" type="text"
 								   className="validate"/>
@@ -73,15 +80,15 @@ class EditPosts extends React.Component {
 							<label className="active" htmlFor="input-post-category-edit">Category</label>
 						</div>
 					</div>
-					<div className="row">
-						<div className="input-field col s12">
+					<div className="row mb-1">
+						<div className="input-field col s12 mb-1 mt-1">
                                     <textarea id="input-post-description-edit"
 											  className="materialize-textarea" defaultValue="Description"/>
 							<label htmlFor="input-post-description-edit">Post Description</label>
 						</div>
 					</div>
 					<textarea id="mde-anchor-edit"/>
-					<div className="card-action">
+					<div className="card-action p-0 pt-1">
 						<button id="btn-submit-post-edit" className="btn waves-effect waves-light mb-3"
 								type="button"
 								name="action">

@@ -39,10 +39,7 @@ class Creator extends React.Component {
 
 	componentDidMount(): void {
 		M.Tabs.init(document.querySelector("#creator-tabs") as unknown as MElements, {});
-	}
-
-	fetchPosts() {
-
+		window.scroll({top:0})
 	}
 
 

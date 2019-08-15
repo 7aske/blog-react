@@ -6,9 +6,10 @@
 }
 
 #create-post .card {
-  height: 78vh;
+  height: 82vh;
 }
 #create-post .create-card {
+  margin-top: 0;
   overflow-y: scroll;
 }
 #create-post .create-card::-webkit-scrollbar {
@@ -24,9 +25,10 @@
 }
 
 #edit-posts .card {
-  height: 78vh;
+  height: 82vh;
 }
 #edit-posts .edit-card {
+  margin-top: 0;
   overflow-y: scroll;
 }
 #edit-posts .edit-card::-webkit-scrollbar {

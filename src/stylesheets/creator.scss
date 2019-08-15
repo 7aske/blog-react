@@ -7,9 +7,10 @@
 
 #create-post {
     .card {
-        height: 78vh;
+        height: 82vh;
     }
     .create-card{
+        margin-top: 0;
         overflow-y: scroll;
 
         &::-webkit-scrollbar {
@@ -25,15 +26,17 @@
             background-color: #494f54;
             outline: 1px solid slategrey;
         }
+
     }
 }
 
 #edit-posts {
     .card {
-        height: 78vh;
+        height: 82vh;
     }
 
     .edit-card {
+        margin-top: 0;
         overflow-y: scroll;
 
         &::-webkit-scrollbar {
