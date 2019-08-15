@@ -2,6 +2,12 @@ import React from "react";
 import shortid from "shortid";
 import M, {Modal} from "materialize-css";
 
+export type Question = {
+	type ?: string;
+	title: string;
+	text: string;
+}
+
 type ModalConfirmProps = {
 	title: string;
 	question: string;

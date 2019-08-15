@@ -49,18 +49,15 @@ class CreatePost extends React.Component {
 
 
 	modalHandler(answer: boolean) {
-		switch (this.state.question.type) {
-			case "clear":
-				if (answer) {
+		if (answer) {
+			switch (this.state.question.type) {
+				case "clear":
 					this.clearInputs();
-				}
-				break;
-			case "submit":
-				if (answer) {
+					break;
+				case "submit":
 					this.submitPost();
-				}
-				break;
-
+					break;
+			}
 		}
 	}
 
@@ -132,38 +129,19 @@ class CreatePost extends React.Component {
 	onChange(ev: React.ChangeEvent) {
 		const target = ev.target as unknown as HTMLInputElement;
 		const id = target.attributes.getNamedItem("id")!.value;
+		const post = this.state.post;
 		switch (id) {
 			case "input-post-description":
-				this.setState({
-					post: {
-						description: target.value,
-						title: this.state.post.title,
-						category: this.state.post.category,
-						body: this.state.post.body,
-					},
-				});
+				post.description = target.value;
 				break;
 			case "input-post-title":
-				this.setState({
-					post: {
-						description: this.state.post.description,
-						title: target.value,
-						category: this.state.post.category,
-						body: this.state.post.body,
-					},
-				});
+				post.title = target.value;
 				break;
 			case "input-post-category":
-				this.setState({
-					post: {
-						description: this.state.post.description,
-						title: this.state.post.title,
-						category: target.value,
-						body: this.state.post.body,
-					},
-				});
+				post.category = target.value;
 				break;
 		}
+		this.setState({post});
 	}
 
 	componentDidMount(): void {
