@@ -98,8 +98,11 @@ class EditComments extends React.Component {
 			if (token) {
 				token = token.replace("%20", " ").split(" ")[1];
 				axios.delete(url.href, {headers: {"Token": token}}).then(res => {
-					console.log(res);
 					if (res.status === 200) {
+						const comments = this.state.post!.comments.filter(c => c.id !== commentid);
+						const post = this.state.post;
+						post!.comments = comments;
+						this.setState({post});
 						console.log("Deleted");
 					}
 				}).catch(err => console.error(err));

@@ -76,6 +76,11 @@
 
 		.collection-item {
 			font-size: 12px;
+			cursor: pointer;
+
+			&:hover {
+				background-color: #cbd3da;
+			}
 
 			.secondary-content {
 				position: absolute;
