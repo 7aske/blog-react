@@ -4,6 +4,7 @@ import "simplemde/dist/simplemde.min.css";
 import "../../stylesheets/creator.css";
 import CreatePost from "./CreatePost";
 import EditPosts from "./EditPosts";
+import EditComments from "./EditComments";
 
 type CreatorState = {
 	createPostTitle: string;
@@ -48,18 +49,17 @@ class Creator extends React.Component {
 			<div className="row">
 				<div className="col s12">
 					<ul className="tabs grey darken-4" id="creator-tabs">
-						<li className="tab col s3"><a className="orange-text active" href="#create-post">Create post</a>
+						<li className="tab col s3"><a className="orange-text" href="#create-post">Create post</a>
 						</li>
 						<li className="tab col s3"><a className="orange-text" href="#edit-posts">Edit posts</a></li>
-						<li className="tab col s3 disabled"><a className="grey-text text-darken-2" href="#test3">Disabled
-							Tab</a></li>
+						<li className="tab col s3"><a className="orange-text" href="#edit-comments">Edit Comments</a></li>
 						<li className="tab col s3 disabled"><a className="grey-text text-darken-2" href="#test4">Disabled
 							Tab</a></li>
 					</ul>
 				</div>
 				<CreatePost />
 				<EditPosts />
-				<div id="test3" className="col s12">Test 3</div>
+				<EditComments />
 				<div id="test4" className="col s12">Test 4</div>
 			</div>
 		);

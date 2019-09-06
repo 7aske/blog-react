@@ -3,22 +3,30 @@ import axios from "axios";
 
 type VoteControllerState = {
 	id: string;
+	commentid ?: string;
 	type: string;
 	votes: number;
 	vote: "up" | "down" | "none";
 }
 
+type VoteControllerTypes = "comment" | "post";
+type VoteControllerUrls = {
+	"comment": URL;
+	"post": URL;
+	[key:string]: URL;
+};
+
 type VoteControllerProps = {
 	id: string;
 	votes: number;
-	type: "comment" | "post";
+	type: VoteControllerTypes;
+	commentid ?: string;
 }
 
 class VoteController extends React.Component {
 	props: VoteControllerProps;
 	state: VoteControllerState;
-	commentApiUrl: URL;
-	postVoteApiUrl: URL;
+	url: VoteControllerUrls;
 
 	constructor(props: VoteControllerProps) {
 		super(props);
@@ -29,12 +37,14 @@ class VoteController extends React.Component {
 			votes: props.votes,
 			vote: "none",
 		};
-		this.commentApiUrl = new URL(window.location.href);
-		this.postVoteApiUrl = new URL(window.location.href);
-		this.commentApiUrl.pathname = `/api/v1/posts/${this.state.id}/comments`;
-		this.postVoteApiUrl.pathname = `/api/v1/posts/${this.state.id}`;
-		this.commentApiUrl.port = window.location.port === "0" || window.location.port === "" ? "80" : window.location.port;
-		this.postVoteApiUrl.port = window.location.port === "0" || window.location.port === "" ? "80" : window.location.port;
+		this.url = {
+			"comment": new URL(window.location.href),
+			"post": new URL(window.location.href),
+		};
+		this.url["comment"].pathname = `/api/v1/posts/${this.state.id}/comments/${this.props.commentid ? this.props.commentid : ""}`;
+		this.url["post"].pathname = `/api/v1/posts/${this.state.id}`;
+		this.url["comment"].port = window.location.port === "0" || window.location.port === "" ? "80" : window.location.port;
+		this.url["post"].port = window.location.port === "0" || window.location.port === "" ? "80" : window.location.port;
 		this.handleClick = this.handleClick.bind(this);
 	}
 
@@ -66,7 +76,7 @@ class VoteController extends React.Component {
 		this.setState({vote});
 
 
-		axios.post(this.postVoteApiUrl + `?delta=${delta}`).then(res => {
+		axios.post(this.url[this.state.type] + `?delta=${delta}`).then(res => {
 			const data = res.data;
 			console.log("Total votes:", data.votes);
 			this.setState({votes: data.votes});

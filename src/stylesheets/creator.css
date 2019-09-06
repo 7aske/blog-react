@@ -24,6 +24,51 @@
   outline: 1px solid slategrey;
 }
 
+#edit-comments .card {
+  height: 82vh;
+}
+#edit-comments .edit-card {
+  margin-top: 0;
+  overflow-y: scroll;
+}
+#edit-comments .edit-card::-webkit-scrollbar {
+  width: 0.5em;
+}
+#edit-comments .edit-card::-webkit-scrollbar-track {
+  background-color: #dddddd;
+}
+#edit-comments .edit-card::-webkit-scrollbar-thumb {
+  border-radius: 7px;
+  background-color: #494f54;
+  outline: 1px solid slategrey;
+}
+#edit-comments ul {
+  height: 98%;
+  overflow-y: scroll;
+}
+#edit-comments ul::-webkit-scrollbar {
+  width: 0.5em;
+}
+#edit-comments ul::-webkit-scrollbar-track {
+  background-color: #dddddd;
+}
+#edit-comments ul::-webkit-scrollbar-thumb {
+  border-radius: 7px;
+  background-color: #494f54;
+  outline: 1px solid slategrey;
+}
+#edit-comments ul .collection-item {
+  font-size: 12px;
+}
+#edit-comments ul .collection-item .secondary-content {
+  position: absolute;
+  right: 0;
+}
+#edit-comments ul .collection-item .secondary-content a:hover {
+  cursor: pointer;
+  color: orangered;
+}
+
 #edit-posts .card {
   height: 82vh;
 }
