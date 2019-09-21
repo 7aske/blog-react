@@ -30,7 +30,6 @@ class EditComments extends React.Component {
 		this.props = props;
 		this.state = {startPost: 0, postCount: 10, done: false, ready: true, posts: [], post: null};
 		this.modalConfirm = React.createRef();
-		this.initEditor = this.initEditor.bind(this);
 		this.fetchPosts = this.fetchPosts.bind(this);
 		this.safeFetch = this.safeFetch.bind(this);
 		this.postSelectHandler = this.postSelectHandler.bind(this);
@@ -160,7 +159,6 @@ class EditComments extends React.Component {
 	}
 
 	componentDidMount(): void {
-		this.initEditor();
 		const inputPostDescriptionEdit = document.querySelector("#input-post-description-edit") as HTMLFormElement;
 		inputPostDescriptionEdit.focus();
 		inputPostDescriptionEdit.blur();
@@ -172,47 +170,6 @@ class EditComments extends React.Component {
 	componentWillUnmount(): void {
 		const postList = document.querySelector("#edit-comments ul") as HTMLUListElement;
 		postList.removeEventListener("scroll", this.safeFetch, false);
-	}
-
-	initEditor() {
-		this.editor = new SimpleMDE({
-			blockStyles: {
-				bold: "__",
-				italic: "_",
-			},
-			element: document.getElementById("mde-anchor-edit") as unknown as HTMLTextAreaElement,
-			forceSync: true,
-			hideIcons: ["guide", "heading"],
-			indentWithTabs: false,
-			lineWrapping: false,
-			parsingConfig: {
-				allowAtxHeaderWithoutSpace: true,
-				strikethrough: false,
-				underscoresBreakWords: true,
-			},
-			placeholder: "",
-			promptURLs: true,
-			renderingConfig: {
-				singleLineBreaks: false,
-				codeSyntaxHighlighting: true,
-			},
-			shortcuts: {
-				drawTable: "Cmd-Alt-T",
-			},
-			showIcons: ["code", "table"],
-			spellChecker: false,
-			status: ["lines", "words", "cursor"],
-			styleSelectedText: false,
-			tabSize: 4,
-			toolbarTips: true,
-		});
-		this.editor.codemirror.on("change", () => {
-			const post = this.state.post;
-			if (post) {
-				post.body = this.editor!.value();
-				this.setState({post});
-			}
-		});
 	}
 
 	render() {
