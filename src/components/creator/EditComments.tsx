@@ -1,5 +1,4 @@
 import React from "react";
-import { default as SimpleMDE } from "simplemde";
 import axios from "axios";
 import PostType from "../../@types/Post";
 import ModalConfirm, { Question } from "../modals/ModalConfirm";
@@ -21,12 +20,10 @@ type EditPostState = {
 class EditComments extends React.Component {
 	state: EditPostState;
 	props: EditPostProps;
-	editor: SimpleMDE | null;
 	modalConfirm: React.RefObject<ModalConfirm>;
 
 	constructor(props: EditPostProps) {
 		super(props);
-		this.editor = null;
 		this.props = props;
 		this.state = {startPost: 0, postCount: 10, done: false, ready: true, posts: [], post: null};
 		this.modalConfirm = React.createRef();
@@ -44,7 +41,6 @@ class EditComments extends React.Component {
 		if (post) {
 			if (typeof arg === "string") {
 				post.body = arg;
-				this.editor!.value(arg);
 			} else {
 				switch (arg.target.attributes.getNamedItem("id")!.value) {
 					case "input-post-category-edit":
@@ -75,7 +71,6 @@ class EditComments extends React.Component {
 	postSelectHandler(id: string) {
 		const post = this.state.posts.find(post => post.id === id);
 		if (post) {
-			this.editor!.value(post.body as string);
 			this.setState({post});
 		}
 	}
